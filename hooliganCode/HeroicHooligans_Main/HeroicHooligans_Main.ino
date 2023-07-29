@@ -1,5 +1,4 @@
 #include "HackPublisher.h"
-
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -8,27 +7,24 @@
 
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-
 // declare an SSD1306 display object connected to I2C
-Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+HackPublisher publisher("HeroicHooligans");  // publisher instance for team "hackers"
+AM232X AM2320;
 
 const char *ssid = "ASUS-F8";
 const char *password = "K33pi7$@f3%";
-
-HackPublisher publisher("HeroicHooligans");  // publisher instance for team "hackers"
-
 const int gasDetectorAnalogPin = 26; // pins for gas detector
 const int gasDetectorDigitalPin = 33;
 const int trigPin = 13; // pins for ultrasonic
 const int echoPin = 12;
 
-AM232X AM2320;
-float gasReading = 0;
+int gasReading = 0;
 float temperature = 0;
 float humidity = 0;
-long duration = 0;
-long distance = 0;
+float duration = 0;
+float distance = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -38,16 +34,16 @@ void setup() {
   pinMode(gasDetectorDigitalPin, INPUT);
   pinMode(trigPin, OUTPUT); // pin modes for ultrasonic
   pinMode(echoPin, INPUT); 
-  // while (!Serial) continue;
-  // // Connect to wifi
-  // WiFi.begin(ssid);
-  // while (WiFi.status() != WL_CONNECTED) {
-  //   delay(500);
-  //   Serial.print(".");
-  // }
+  while (!Serial) continue;
+  // Connect to wifi
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
 
-  //// Initialize publisher
-  //publisher.begin();
+  // Initialize publisher
+  publisher.begin();
 
   if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // check is oled is connected
     Serial.println(F("SSD1306 allocation failed"));
