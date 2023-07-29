@@ -3,6 +3,8 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include "AM232X.h"
+#include <Adafruit_NeoPixel.h>
+#include<math.h>
 
 
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
@@ -19,12 +21,33 @@ const int gasDetectorAnalogPin = 34; // pins for gas detector
 const int gasDetectorDigitalPin = 33;
 const int trigPin = 13; // pins for ultrasonic
 const int echoPin = 12;
+const int neopixelPin = 26;
+const int numPixels = 12;
+const int delayVal = 250;
+
+Adafruit_NeoPixel neopixel = Adafruit_NeoPixel(numPixels, neopixelPin, NEO_GRB + NEO_KHZ800);
 
 int gasReading = 0;
 float temperature = 0;
 float humidity = 0;
 float duration = 0;
 float distance = 0;
+
+
+void neopixelOn() {
+    for(int i = 0; i < numPixels; i++) {
+    neopixel.setPixelColor(i, neopixel.Color(255, 255, 255));
+    neopixel.show();
+    delay(delayVal);
+  }
+}
+void neoPixelOff() {
+    for(int i = 0; i < numPixels; i++) {
+    neopixel.setPixelColor(i, neopixel.Color(0, 0, 0));
+    neopixel.show();
+    delay(delayVal);
+  }
+}
 
 void setup() {
   // put your setup code here, to run once:
@@ -63,7 +86,7 @@ void setup() {
 
 
 
-
+  neopixel.begin();
 
 
 
@@ -79,6 +102,8 @@ Serial.println("going into loop");
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+
 
   // gas module
   gasReading = analogRead(gasDetectorAnalogPin);
@@ -112,8 +137,8 @@ void loop() {
   // oled.drawRect(32, 32, 30, 30, WHITE);
   // oled.println("Hello");
   // oled.display();
-  
 
+  
   Serial.print("Gas: "); // print data to serial monitor
   Serial.println(gasReading);
   Serial.print("distance: ");
