@@ -1,49 +1,37 @@
-// Create Temperature Gauge
-var gaugeTemp = new LinearGauge({
-    renderTo: 'gauge-temperature',
-    width: 120,
+
+
+/*var radial = new RadialGauge({
+    renderTo: "gauge-humidity",
+    width: 400,
     height: 400,
-    units: "Temperature C",
+    units: 'Km/h',
+    title: false,
+    value: 0,
     minValue: 0,
-    startAngle: 90,
-    ticksAngle: 180,
-    maxValue: 40,
-    colorValueBoxRect: "#049faa",
-    colorValueBoxRectEnd: "#049faa",
-    colorValueBoxBackground: "#f1fbfc",
-    valueDec: 2,
-    valueInt: 2,
+    maxValue: 220,
     majorTicks: [
-        "0",
-        "5",
-        "10",
-        "15",
-        "20",
-        "25",
-        "30",
-        "35",
-        "40"
+        '0','20','40','60','80','100','120','140','160','180','200','220'
     ],
-    minorTicks: 4,
-    strokeTicks: true,
+    minorTicks: 2,
+    strokeTicks: false,
     highlights: [
-        {
-            "from": 30,
-            "to": 40,
-            "color": "rgba(200, 50, 50, .75)"
-        }
+        { from: 0, to: 50, color: 'rgba(0,255,0,.15)' },
+        { from: 50, to: 100, color: 'rgba(255,255,0,.15)' },
+        { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
+        { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
+        { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
     ],
-    colorPlate: "#fff",
-    colorBarProgress: "#CC2936",
-    colorBarProgressEnd: "#049faa",
-    borderShadowWidth: 0,
-    borders: false,
-    needleType: "arrow",
-    needleWidth: 2,
-    needleCircleSize: 7,
-    needleCircleOuter: true,
-    needleCircleInner: false,
-    animationDuration: 1500,
-    animationRule: "linear",
-    barWidth: 10,
-  }).draw();
+    colorPlate: '#222',
+    colorMajorTicks: '#f5f5f5',
+    colorMinorTicks: '#ddd',
+    colorTitle: '#fff',
+    colorUnits: '#ccc',
+    colorNumbers: '#eee',
+    colorNeedle: 'rgba(240, 128, 128, 1)',
+    colorNeedleEnd: 'rgba(255, 160, 122, .9)',
+    valueBox: true,
+    animationRule: 'bounce',
+    animationDuration: 500
+});
+
+radial.draw();*/
