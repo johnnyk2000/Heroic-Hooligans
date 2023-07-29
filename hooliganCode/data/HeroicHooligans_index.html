@@ -10,6 +10,7 @@
   <script type="text/javascript" src="HeroicHooligans_script.js"></script>
   <!--CSS links-->
   <link rel="stylesheet" href="HeroicHooligans_style.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <title>Heroic Hooligans Mission Control </title>
 </head>
 
@@ -23,28 +24,39 @@
     </ul>
   </nav>
 
-  <div id = "section1"></div> <!--section 1 has no heading-->
+  <div id = "section1"> <!--section 1 has no heading-->
+    <div class = "banner">
+
+    </div>
+  </div>
+
+  
   <div id = "section2">
     <h1>Mission Control</h1>
+    <div class="content">
+      <div class="card-grid"> <!--temp card-->
+        <div class="card">
+          <p class="card-title">Temperature</p>
+          <canvas id="gauge-temperature"></canvas>
+        </div>
+        <div class="card"> <!--gas card-->
+          <p class="card-title">Gas Detection</p>
+          <canvas id="gauge-gas"></canvas>
+        </div>
+        <div class="card"> <!--ultrasonic card-->
+          <p class="card-title">Ultrasonic Distance Sensor</p>
+          <canvas id="gauge-ultrasonic"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
+
   <div id = "section3">
     <h1>Design</h1>
   </div>
   
 </body>
 </html>
-
-
-<!--
-  <div class="topnav">
-    <h1>Heroic Hooligans Mission Control</h1>
-  </div>
-
-  
-  
-
-  <h2> Temperature </h2>
-  <h2> Gas Detection </h2>
-  <h2>Ultrasonic Distance Sensor  </h2>
-
-  -->
