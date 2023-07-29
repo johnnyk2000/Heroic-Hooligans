@@ -27,24 +27,42 @@ li{
     float: left;
 }
 
-a{
+a {
     padding: 20px;
     width: 100px;
     display: block;
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.472);
     text-transform: uppercase; /*optional*/
-}
 
-a:hover{
+    /* can change to control the border */
+    --border-color: rgb(255, 255, 255);
+    --border-width: 5px;
+    --bottom-distance: 0px;
+    
+    color: rgba(0, 0, 0, 0.472);
+    display: inline-block;
+    background-image: linear-gradient(var(--border-color), var(--border-color));
+    background-size: 0% var(--border-width);
+    background-repeat: no-repeat;
+    transition: background-size 0.3s;
+    margin: 5px 0;
+  }
+  
+  .fromLeft {
+    background-position: 0 calc(100% - var(--bottom-distance))
+  }
+  
+  a:hover {
     color: whitesmoke;
-}
+    background-size: 100% var(--border-width);
+  }
 
 h1 {
   text-align: center;
-  margin: 85px;
+  margin-top: 85px;
+  margin-bottom: 10px;
   padding: 0;
-  font-weight: 400px;
+  font-weight: lighter;
   color:rgba(0, 0, 0, 0.762);
 }
 
@@ -87,6 +105,7 @@ h2 {
 
 .card-grid { 
     max-width: 1200px; 
+    min-height: 400px;
     margin: 0 auto; 
     display: grid; 
     grid-gap: 1.3em; 
@@ -98,13 +117,13 @@ h2 {
     box-shadow: 2px 2px 12px 1px rgba(140, 140, 140, 0.663);
   }
   
-/*.card:hover {
+.card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
-}*/
+}
 
 .card-title { 
     font-size: 1.2rem;
     font-weight: bold;
-    color: #575353
+    color: #575353;
+    text-align: center;
   }
-  
