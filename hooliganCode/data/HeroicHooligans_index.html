@@ -8,6 +8,7 @@
   <script>team_name = "Heroic Hooligans"</script>
   <script type="module" src="communication.js"></script>
   <script type="text/javascript" src="HeroicHooligans_script.js"></script>
+  <script src="https://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
   <!--CSS links-->
   <link rel="stylesheet" href="HeroicHooligans_style.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
@@ -24,40 +25,58 @@
     </ul>
   </nav>
 
+  <!--Home Page/Landing-->
   <div id = "section1"> <!--section 1 has no heading-->
     <div class = "banner">
 
     </div>
   </div>
 
-  
+  <!--Mission Control with Temp, Humidity, Gas, Ultrasonic Sensor Data-->
   <div id = "section2">
     <h1>Mission Control</h1>
     <div class="content">
-      <div class="card-grid"> <!--temp card-->
-        <div class="card">
+      <div class="card-grid"> 
+
+        <div class="card"> <!--temp card-->
           <p class="card-title">Temperature</p>
           <canvas id="gauge-temperature"></canvas>
         </div>
-        <div class="card">
+        <div>
+          <p class = "temperature">This is where temp displays</p>
+        </div>
+
+        <div class="card"> <!--humidity card-->
           <p class="card-title">Humidity</p>
           <canvas id="gauge-humidity"></canvas>
         </div>
+        <div>
+          <p class = "humidity">This is where humidity displays</p>
+        </div>
+
         <div class="card"> <!--gas card-->
           <p class="card-title">Gas Detection</p>
           <canvas id="gauge-gas"></canvas>
         </div>
+        <div>
+          <p class = "gasReading">This is where gas displays</p>
+        </div>
+
         <div class="card"> <!--ultrasonic card-->
           <p class="card-title">Ultrasonic Distance Sensor</p>
           <canvas id="gauge-ultrasonic"></canvas>
         </div>
+        <div>
+          <p class = "distance">This is where distance displays</p>
+        </div>
+
       </div>
     </div>
   </div>
 
 
 
-
+<!--Design Review-->
   <div id = "section3">
     <h1>Design</h1>
   </div>

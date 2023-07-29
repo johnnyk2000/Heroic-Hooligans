@@ -36,6 +36,7 @@ li{
     float: left;
 }
 
+/*for links in nav bar*/
 a {
     padding: 20px;
     width: 100px;
@@ -112,12 +113,13 @@ h2 {
     padding: 6%;
   }
 
+/*cards formatting*/
 .card-grid { 
     max-width: 1200px; 
     min-height: 400px;
     margin: 0 auto; 
     display: grid; 
-    grid-gap: 1.3em; 
+    grid-gap: 1em; 
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
 
