@@ -120,8 +120,8 @@ h2 {
     margin: 0 auto; 
     display: grid; 
     grid-gap: 1em; 
-    grid-template-columns: 20ch auto;
-    /*grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));*/
+   /* grid-template-columns: 20ch auto;*/
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
 
 .card { 
@@ -140,3 +140,11 @@ h2 {
     color: #575353;
     text-align: center;
   }
+
+.sensor-data
+{
+    color: #575353;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+}
