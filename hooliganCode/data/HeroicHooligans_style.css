@@ -1,9 +1,18 @@
+/*
+colors
+green: CCD5AE
+light green: E9EDC9
+beige: FAEDCD
+light beige: FEFAE0
+brown: D4A373
+*/
+
 html{
     scroll-behavior: smooth;
 }
 
 body{
-    background-color: #C1C8E4; /*#13521d9f; */
+    background-color:#FEFAE0; 
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
@@ -11,7 +20,7 @@ body{
 
 nav{
     width: 100%;
-    background: #5680E9;/*#2c703762;*/
+    background: #CCD5AE;
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -39,7 +48,7 @@ a {
     --border-width: 5px;
     --bottom-distance: 0px;
     
-    color: rgba(0, 0, 0, 0.472);
+    color: rgba(0, 0, 0, 0.523);
     display: inline-block;
     background-image: linear-gradient(var(--border-color), var(--border-color));
     background-size: 0% var(--border-width);
@@ -73,7 +82,7 @@ h2 {
 #section1
 {
     height: 800px; /*may need to change section heights later*/
-    background: #C1C8E4;/*#e3e3e3;*/
+    background: #FEFAE0;/*#e3e3e3;*/
     display: inline-block; /*set width and height*/
     width: 100%;
 }
@@ -81,7 +90,7 @@ h2 {
 #section2
 {
     height: 800px; 
-    background:#84CEEB;/*rgba(223, 197, 29, 0.173);*/
+    background:#FAEDCD;/*rgba(223, 197, 29, 0.173);*/
     display: inline-block;
     width: 100%
 }
@@ -89,7 +98,7 @@ h2 {
 #section3
 {
     height: 1000px;
-    background: #8860D0; /*#2c703730;*/
+    background: #D4A373; /*#2c703730;*/
     display: inline-block; /*set width and height*/
     width: 100%
 }
@@ -97,7 +106,7 @@ h2 {
 .banner
 {
     color: white;
-    /*for home page header*/
+    /*for home page section header*/
 }
 .content { 
     padding: 6%;
@@ -113,7 +122,8 @@ h2 {
   }
 
 .card { 
-    background-color: #C1C8E4; 
+    border-radius: 35px;
+    background-color: #CCD5AE; 
     box-shadow: 2px 2px 12px 1px rgba(140, 140, 140, 0.663);
   }
   
