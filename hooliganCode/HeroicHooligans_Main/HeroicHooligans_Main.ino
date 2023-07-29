@@ -23,7 +23,7 @@ const int trigPin = 13; // pins for ultrasonic
 const int echoPin = 12;
 const int neopixelPin = 26;
 const int numPixels = 12;
-const int delayVal = 250;
+const int neopixelButton = 17;
 
 Adafruit_NeoPixel neopixel = Adafruit_NeoPixel(numPixels, neopixelPin, NEO_GRB + NEO_KHZ800);
 
@@ -32,20 +32,20 @@ float temperature = 0;
 float humidity = 0;
 float duration = 0;
 float distance = 0;
-
+bool npButtonState = false; // for toggle
 
 void neopixelOn() {
     for(int i = 0; i < numPixels; i++) {
     neopixel.setPixelColor(i, neopixel.Color(255, 255, 255));
     neopixel.show();
-    delay(delayVal);
+    delay(50);
   }
 }
-void neoPixelOff() {
+void neopixelOff() {
     for(int i = 0; i < numPixels; i++) {
     neopixel.setPixelColor(i, neopixel.Color(0, 0, 0));
     neopixel.show();
-    delay(delayVal);
+    delay(50);
   }
 }
 
@@ -57,6 +57,7 @@ void setup() {
   pinMode(gasDetectorDigitalPin, INPUT);
   pinMode(trigPin, OUTPUT); // pin modes for ultrasonic
   pinMode(echoPin, INPUT); 
+  pinMode(neopixelButton, INPUT_PULLUP);
   while (!Serial) continue;
   // Connect to wifi
   WiFi.begin(ssid, password);
@@ -104,7 +105,6 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 
-
   // gas module
   gasReading = analogRead(gasDetectorAnalogPin);
 
@@ -131,7 +131,19 @@ void loop() {
     humidity = AM2320.getHumidity();
   }
 
+  if(digitalRead(neopixelButton) == 0) {
+    if(npButtonState == false){
+      npButtonState = true;
+      neopixelOn();
 
+    }
+    else if(npButtonState == true) {
+      npButtonState = false;
+      neopixelOff();
+    }
+  }
+Serial.print("neopixel button: ");
+Serial.println(npButtonState);
 
   // oled.setCursor(30, 30);
   // oled.drawRect(32, 32, 30, 30, WHITE);
