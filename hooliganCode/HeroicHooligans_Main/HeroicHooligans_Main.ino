@@ -100,7 +100,6 @@ void loop() {
   // Serial.println(temperature);
   // Serial.print("Humidity: ");
   // Serial.println(humidity);
-  Serial.print("AM2320\t");
   int status = AM2320.read();
   if (status) { // if data is read, set the temperature and humidity
     temperature = AM2320.getTemperature();
@@ -115,7 +114,7 @@ void loop() {
   // oled.display();
   
 
-  Serial.print("Gas: ");
+  Serial.print("Gas: "); // print data to serial monitor
   Serial.println(gasReading);
   Serial.print("distance: ");
   Serial.println(distance);
@@ -125,7 +124,13 @@ void loop() {
   Serial.println(humidity);
   Serial.println();
 
-  delay(300);
+  publisher.store("gasReading", gasReading); // send data through blackbox
+  publisher.store("distance", distance);
+  publisher.store("temperature", temperature);
+  publisher.store("humidity", humidity);
+  publisher.send();
+
+  delay(500);
 
 
 
