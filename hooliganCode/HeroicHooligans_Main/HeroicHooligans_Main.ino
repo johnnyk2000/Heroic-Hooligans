@@ -15,7 +15,7 @@ AM232X AM2320;
 
 const char *ssid = "ASUS-F8";
 const char *password = "K33pi7$@f3%";
-const int gasDetectorAnalogPin = 26; // pins for gas detector
+const int gasDetectorAnalogPin = 34; // pins for gas detector
 const int gasDetectorDigitalPin = 33;
 const int trigPin = 13; // pins for ultrasonic
 const int echoPin = 12;
@@ -50,16 +50,13 @@ void setup() {
     while (true);
   }
 
-    Serial.println(__FILE__); // check if temp / hum sensor is connected
-  Serial.print("LIBRARY VERSION: ");
-  Serial.println(AM232X_LIB_VERSION);
-  Serial.println();
-  //  if (! AM2320.begin() )
-  // {
-  //   Serial.println("Temp / Hum sensor not found");
-  //   while (1);
-  // }
-  // AM2320.wakeUp();
+
+   if (! AM2320.begin() )
+  {
+    Serial.println("Temp / Hum sensor not found");
+    while (1);
+  }
+  AM2320.wakeUp();
 
   oled.clearDisplay();
   oled.display();
@@ -82,16 +79,19 @@ Serial.println("going into loop");
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  // gas module
+  gasReading = analogRead(gasDetectorAnalogPin);
+
+  // temperature and humidity
   digitalWrite(trigPin, LOW); // clear trigpin
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH); // set trigpin to high for 10 microsec
   delayMicroseconds(10);
   duration = pulseIn(echoPin, HIGH); // sound wave travel time in microseconds
   distance = (3.43 * pow(10, -2) * duration) / 2; // distance in cm
-  Serial.print("distance: ");
-  Serial.println(distance);
 
-  //gasReading = analogRead(gasDetectorAnalogPin);
+
   // temperature = AM2320.getTemperature();
   // humidity = AM2320.getHumidity();
   // Serial.print("Gas reading: ");
@@ -100,7 +100,14 @@ void loop() {
   // Serial.println(temperature);
   // Serial.print("Humidity: ");
   // Serial.println(humidity);
-  delay(300);
+  Serial.print("AM2320\t");
+  int status = AM2320.read();
+  if (status) { // if data is read, set the temperature and humidity
+    temperature = AM2320.getTemperature();
+    humidity = AM2320.getHumidity();
+  }
+
+
 
   // oled.setCursor(30, 30);
   // oled.drawRect(32, 32, 30, 30, WHITE);
@@ -108,8 +115,17 @@ void loop() {
   // oled.display();
   
 
+  Serial.print("Gas: ");
+  Serial.println(gasReading);
+  Serial.print("distance: ");
+  Serial.println(distance);
+  Serial.print("Temperature: ");
+  Serial.println(temperature);
+  Serial.print("Humidity ");
+  Serial.println(humidity);
+  Serial.println();
 
-
+  delay(300);
 
 
 
