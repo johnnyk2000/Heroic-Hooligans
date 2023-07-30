@@ -27,9 +27,23 @@
   </nav>
 
   <!--Home Page/Landing-->
-  <div id = "section1"> <!--section 1 has no heading-->
+  <div id = "section1">
     <div class = "banner">
+        <h1 style="color:#a4ae84">The Heroic Hooligan Gauntlet</h1>
+        <div class = "landing-text">
+        <p> A gauntlet made to withstand harsh conditions, quickly transmit data, communicate with mission control, and save the Bruin Engineers from 
+         the wreckage of Boelter Hall. </p>
+        </p>
+      </div>
+      
     </div>
+    <span class="container">
+      <img src="HeroicHooligans_images/Assembly.png" alt="Gauntlet assembly" class="image">
+      <div class="overlay">
+        <img class="icon" src="HeroicHooligans_images/Sketch.png" alt="sketches of gauntlet">
+          <i class="fa fa-user"></i>
+      </div>
+    </span>
   </div>
 
   <!--Mission Control with Temp, Humidity, Gas, Ultrasonic Sensor Data-->
@@ -40,9 +54,9 @@
       <span class="dot" id = "gasAlert"></span>
       <span class="dot" id = "ledAlert" style="margin-right:0px"></span>
       
-      <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:60px;margin-right:175px;display:inline-block;">Fire Alert</p>
+      <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:60px;margin-right:185px;display:inline-block;">Fire Alert</p>
       <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;">Gas Leak</p>
-      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:190px; display:inline-block;">LED on</p>
+      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:195px; display:inline-block;">LED on</p>
       <p style="color:#FAEDCD;font-size:xx-small;"id = "npButtonState"></p> <!--sending button status, hidden-->
     </div>
 
@@ -67,7 +81,7 @@
         <div class="card"> <!--ultrasonic card-->
           <p class="card-title">Ultrasonic Distance Sensor</p><br>
           <p style ="text-align: center;color: #575353; font-size:larger">Next detected item in </p>
-          <p class = "sensor-data" id = "distance" style="font-size:larger;">DIST</p> <br>
+          <p class = "sensor-data" id = "distance" style="font-size:50px; text-align:center;">DIST</p> <br>
           <p style ="text-align: center;color: #575353; font-size:larger">cm</p>
           <canvas id="gauge-ultrasonic"></canvas>
         </div>
@@ -87,12 +101,12 @@
   var tempGauge = new LinearGauge({
     renderTo: 'gauge-temperature',
     width: 195,
-    height: 400,
+    height: 370,
     units: "°C",
     minValue: 0,
     startAngle: 90,
     ticksAngle: 180,
-    valueBox: true, //if sensor works with this KEEP, else, DELTE
+    valueBox: false, //if sensor works with this KEEP, else, DELTE
     valueBoxBorderRadius: 10,
     maxValue: 100,
     majorTicks: [
@@ -214,4 +228,13 @@ if (ledState)
     </script>
 
 </body>
+
+
+<footer>
+  <p><a style="text-align: center;" href="https://github.com/johnnyk2000/Heroic-Hooligans" target="_blank"><img src="HeroicHooligans_images/github-mark.png"
+    width="29"
+    height="29"></a></p>
+  <p style="color: #00000085; font-weight:light;font-size:x-small;margin-left:30px;margin-bottom:50px;">Team: Jonathan Kim, Lyra Latifi, Antonio Ramirez.<br>Created for UCLA HAcK 2023.</p>
+</footer>
+
 </html>
