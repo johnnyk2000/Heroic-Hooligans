@@ -50,10 +50,10 @@
   <!--Mission Control with Temp, Humidity, Gas, Ultrasonic Sensor Data-->
   <div id = "section2" style="cursor: url(HeroicHooligans_images/sniperBlack.cur), auto">
     <h1>Mission Control</h1>
-    <div class="box"> <!--mission control alarm system-->
-      <span class="dot" id = "fireAlert" style="margin-left:75px"></span>
-      <span class="dot" id = "gasLeak"></span>
-      <span class="dot" id = "npButtonState" style="margin-right:0px"></span>
+    <div class="box"> <!--mission control alarms-->
+      <span class="dot"  style="margin-left:55px"><div id = "fireAlert" class="alert"></div></span>
+      <span class="dot"><div id = "gasLeak" class="alert"></div></span>
+      <span class="dot" style="margin-right:0px"><div id = "npButtonState" class="alert"></div></span>
       
       <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:55px;margin-right:175px;display:inline-block;font-size:19px;">Fire Alert</p>
       <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;font-size:19px;">Gas Leak</p>
@@ -62,7 +62,6 @@
       <p style="color:#FAEDCD;font-size:xx-small;"id = "fireAlert"></p> <!--sending fire status, hidden-->
       <p style="color:#FAEDCD;font-size:xx-small;"id = "gasLeak"></p> <!--sending gas status, hidden-->
     </div>
-
     <div class="content"> <!--card grid-->
       <div class="card-grid"> 
         <div class="card"> <!--temp card-->
@@ -72,20 +71,19 @@
         </div>
         <div class="card"> <!--humidity card-->
           <p class ="card-title" style = "margin-top:15px">Humidity</p>
-          <p  class = "sensor-data" id = "humidity" style="font-size:50px;text-align:center;margin-top:133px;margin-bottom:70px">HUMIDITY</p> <p style ="text-align:center;font-size:27px;color:#575353">% RH</p>
+          <p  class = "sensor-data" id = "humidity" style="font-size:50px;text-align:center;margin-top:133px;margin-bottom:50px">HUMIDITY</p> <p style ="text-align:center;font-size:27px;color:#575353">% RH</p>
           <canvas id="gauge-humidity"></canvas>
         </div>
-
         <div class="card"> <!--gas card-->
           <p class="card-title" style = "margin-top:15px">Gas Detection</p>
-          <p  class = "sensor-data" id = "gasReading" style="font-size:50px;text-align:center;margin-top:133px;margin-bottom:70px">GAS</p> <p style ="text-align:center;font-size:27px;color:#575353">ppm</p>
+          <p  class = "sensor-data" id = "gasReading" style="font-size:50px;text-align:center;margin-top:133px;margin-bottom:50px">GAS</p> <p style ="text-align:center;font-size:27px;color:#575353">ppm</p>
           <canvas id="gauge-gas"></canvas>
         </div>
         <div class="card"> <!--ultrasonic card-->
           <p class="card-title" style = "margin-top:15px;">Ultrasonic Distance Sensor</p><br>
           <p style ="text-align: center;color: #575353; font-size:larger">Next detected item in </p>
-          <p class = "sensor-data" id = "distance" style="font-size:50px; text-align:center;margin-bottom:70px;">DIST</p> <br>
-          <p style ="text-align: center;color: #575353; font-size:27px;;margin-top:0px;">cm</p>
+          <p class = "sensor-data" id = "distance" style="font-size:50px; text-align:center;margin-bottom:32px;">DIST</p> <br>
+          <p style ="text-align: center;color: #575353; font-size:27px;margin-top:0px;">cm</p>
           <canvas id="gauge-ultrasonic"></canvas>
         </div>
       </div>
@@ -96,13 +94,49 @@
 <!--Design Review-->
   <div id = "section3">
     <h1 style="margin-bottom: 10px";>Design</h1><br><br>
-    <h2 style="font-size:55px;color:#000000c2";">Overview</h2>
-    <p style="margin-top:80px;margin-bottom:15px;margin-left:150px;margin-right:150px;font-size:30px;color:#FAEDCD;">Lorem ipsum dolor sit amet. Eum natus quis ut iusto necessitatibus aut consequatur 
+    <h2 style="font-size:55px;color:#FAEDCD";">Overview</h2>
+    <p style="margin-top:80px;margin-bottom:40px;margin-left:150px;margin-right:150px;font-size:30px;color:#FAEDCD;">
+      The Heroic Hooligan gauntlet was designed with the goals of  
+      It makes use of three sensors: temperature, humidity, gas, and ultrasonic.
+      Lorem ipsum dolor sit amet. Eum natus quis ut iusto necessitatibus aut consequatur 
       eaque rem consequatur doloremque ut internos galisum. In velit atque aut quasi obcaecati 
       et debitis quos non vero voluptatum est nulla magnam et sunt voluptas. 
       Non recusandae atque a praesentium fugiat vel galisum ipsam. Ea veniam 
       voluptatem qui corporis aspernatur id voluptatem nesciunt in consequatur corrupti.</p><br><br><br>
-      <span><img></span>
+     
+
+      <table cellspacing="20">
+        <tr>
+          <td>
+            <figure>
+              <img src="HeroicHooligans_images/codeFiller.png" width="200" style="float:left">
+            </figure>
+          </td>
+          <td>
+            <h2 style="text-align: left;">Coding</h2>
+            <p style="margin-bottom: 100px; margin-right:200pxl; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
+              doloremque pariatur. Est necessitatibus nostrum est neque
+               recusandae rem facilis quas ut omnis blanditiis et maiores 
+               debitis et autem ducimus. Ut beatae rerum ut repudiandae maiores 
+               ex explicabo distinctio nam aliquam necessitatib</p>
+          </td>
+        </tr>
+      </table>
+
+
+
+
+      <h2 style="text-align: left; margin-left:150px;">Electronics</h2>
+      <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
+        doloremque pariatur. Est necessitatibus nostrum est neque
+         recusandae rem facilis quas ut omnis blanditiis et maiores 
+         debitis et autem ducimus. Ut beatae rerum ut repudiandae maiores 
+         ex explicabo distinctio nam aliquam necessitatib</p>
+
+
+
+
+
 
 
   </div>
@@ -213,6 +247,8 @@ let ledAlert = true;*/
 let humid = document.getElementById("humidity").innerHTML;
 let gas = document.getElementById("gasReading").innerHTML;*/
 
+
+//FIXME might not be allowed to have any mission control alerts
 let fireAlert = document.getElementById("fireAlert").innerHTML;
 let gasLeak = document.getElementById("gasLeak").innerHTML;
 let ledState = document.getElementById("npButtonState").innerHTML;
@@ -234,7 +270,6 @@ if (ledState)
     </script>
 
 </body>
-
 
 <footer>
   <p><a style="text-align: center;" href="https://github.com/johnnyk2000/Heroic-Hooligans" target="_blank"><img src="HeroicHooligans_images/github-mark.png"

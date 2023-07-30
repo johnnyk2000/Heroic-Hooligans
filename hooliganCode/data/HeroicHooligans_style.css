@@ -18,6 +18,7 @@ body{
     font-family: 'Lato', sans-serif;
 }
 
+/*website navigation menu*/
 nav{
     width: 100%;
     background: #CCD5AE;
@@ -44,7 +45,7 @@ li{
   margin-left: 6px;
 }
 
-/*for home page section header*/
+/*home page section header*/
 .banner
 {
   width: 70%;
@@ -209,6 +210,18 @@ canvas
   padding: 15px;
   }
 
+  .alert
+  {
+  width: 70px;
+  height: 20px;
+  border: 3px solid #FEFAE0;
+  background-color: #FEFAE0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  padding: 0px;
+  }
+
 .dot {
   margin-top: 10px;
   margin-left: 0px;
@@ -216,14 +229,13 @@ canvas
   margin-bottom: 4px;
   height: 30px;
   width: 30px;
-  background-color: #FEFAE0;
+  background-color: #FAEDCD;
   border-radius: 50%;
   display: inline-block;
 }
 
 /*Image of assembly and overlay*/
-/*image of assembly*/
-.container {
+.container { /*image of assembly*/
   margin-left: 1000px;
   margin-right: 20px;
   margin-top: 214px;
@@ -269,7 +281,18 @@ canvas
   text-align: center;
 }
 
-/*Design Section*/
+/*design*/
+
+/*circular image*/
+figure{
+  width:155px;
+  height:155px;
+  margin-top: 100px;
+  margin-left: 90px;
+  margin-bottom: 90px;
+  border-radius:50%;
+  overflow:hidden;
+}
 
 
 
