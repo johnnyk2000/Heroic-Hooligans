@@ -130,13 +130,13 @@ void loop() {
   }
 
 
-  if(digitalRead(neopixelButton) == 0) {
-    if(npButtonState == false){
-      npButtonState = true;
-      neopixelOn();
+  if(digitalRead(neopixelButton) == 0) { // if button gets pressed
+    if(npButtonState == false){ // and if ring led is currently off, turn led on
+      npButtonState = true; 
+      neopixelOn(); 
 
     }
-    else if(npButtonState == true) {
+    else if(npButtonState == true) { // and if ring led is currently on, turn led off
       npButtonState = false;
       neopixelOff();
     }
