@@ -44,6 +44,31 @@ li{
   margin-left: 6px;
 }
 
+/*for home page section header*/
+.banner
+{
+  width: 70%;
+  height: 90%;
+  margin-top: 100px;
+  margin-bottom: 0px;
+  left: 60px;
+  position: absolute;
+  color: #a4ae84;
+}
+
+.banner h1{
+  font-size:calc(3.4vw + 3.4vh + 2vmin);
+}
+
+.landing-text
+{
+ margin-left: 30px;
+ margin-top: 0px;
+ font-size: 20px;
+ width: 510px;
+ position: absolute;
+}
+
 /*for links in nav bar*/
 a {
     padding: 20px;
@@ -103,7 +128,7 @@ h2 {
     height: auto; 
     background:#FAEDCD;
     display: inline-block;
-    width: 100%
+    width: 100%;
 }
 
 #section3
@@ -112,12 +137,6 @@ h2 {
     background: #D4A373; /*#2c703730;*/
     display: inline-block; /*set width and height*/
     width: 100%;
-}
-
-.banner
-{
-    color: white;
-    /*for home page section header*/
 }
 
 .content { 
@@ -139,6 +158,7 @@ h2 {
   }
 
 .card { 
+    max-height: fit-content;
     border-radius: 35px;
     background-color: #CCD5AE; 
     box-shadow: 2px 2px 12px 1px rgba(140, 140, 140, 0.663);
@@ -175,10 +195,10 @@ canvas
     margin-top: 50px;
 }
 
-/*Mission control alarm system heading*/
+/*Mission control alarm system*/
 .box{
   width: 699px;
-  height: 60px;
+  height: 20px;
   border: 0px solid #FAEDCD;
   margin-left: auto;
   margin-right: auto;
@@ -191,9 +211,62 @@ canvas
   margin-left: 0px;
   margin-right: 223px;
   margin-bottom: 4px;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   background-color: #FEFAE0;
   border-radius: 50%;
   display: inline-block;
 }
+
+/*Image of assembly and overlay*/
+/*image of assembly*/
+.container {
+  margin-left: 1000px;
+  margin-right: 20px;
+  margin-top: 214px;
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Make the image to responsive */
+.image {
+  width: 100%;
+  height: auto;
+}
+
+/* The overlay effect (full height and width) - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #FEFAE0;
+}
+
+/* When you mouse over the container, fade in the overlay icon*/
+.container:hover .overlay {
+  opacity: 1;
+}
+
+/* The icon inside the overlay is positioned in the middle vertically and horizontally */
+.icon {
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*Design Section*/
+
+
+
