@@ -40,20 +40,27 @@ float humidity = 0;
 float duration = 0;
 float distance = 0;
 bool npButtonState = false; // for ring led toggle
+bool fireAlert = false;
+bool gasLeak = false;
 //string fire = ""; // or bool -- discuss with lyra
 
 // hazard functions MAY NEED TO CHANGE VALUES AFTER TESTING AND CALIBRATION
-bool isFire(const float& temp, const float& hum) {
+void checkFire(const float& temp, const float& hum) {
   if (temp > 32.0 && hum < 45) {
-    return true;
+    fireAlert = true;
   }
-  return false;
+  else {
+    fireAlert = false;
+  }
 }
-bool isGasLeak(const int& gas) {
+
+void checkGas(const int& gas) {
   if (gas > 950) {
-    return true;
+    gasLeak = true;
   }
-  return false;
+  else {
+    gasLeak = false;
+  }
 }
 bool isSafe (const int& temp, const float& hum, const int& gas) {
   if (temp < 29 && hum > 50 && gas < 900) {
@@ -181,8 +188,9 @@ void loop() {
     }
   }
 
-
-
+  checkFire(temperature, humidity); // check conditions
+  checkGas(gasReading);
+  
   oledPrintData();
 
   Serial.print("neopixel button: ");  // print data to serial monitor
@@ -201,6 +209,9 @@ void loop() {
   publisher.store("distance", static_cast<int>(distance));
   publisher.store("temperature", static_cast<int>(temperature));
   publisher.store("humidity", static_cast<int>(humidity));
+  publisher.store("npButtonState", npButtonState);
+  publisher.store("fireAlert", fireAlert);
+  publisher.store("gasLeak", gasLeak);
   publisher.send();
 
   delay(500);
