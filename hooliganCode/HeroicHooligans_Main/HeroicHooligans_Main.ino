@@ -55,7 +55,7 @@ void checkFire(const float& temp, const float& hum) {
 }
 
 void checkGas(const int& gas) {
-  if (gas > 950) {
+  if (gas > 1000) {
     gasLeak = true;
   }
   else {
@@ -68,6 +68,7 @@ bool isSafe (const int& temp, const float& hum, const int& gas) {
   }
   return false;
 }
+
 void oledPrintData() { // function to print data to oled
   oled.clearDisplay();
   oled.setCursor(0, 30);
