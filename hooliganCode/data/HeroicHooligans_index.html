@@ -52,13 +52,15 @@
     <h1>Mission Control</h1>
     <div class="box"> <!--mission control alarm system-->
       <span class="dot" id = "fireAlert" style="margin-left:75px"></span>
-      <span class="dot" id = "gasAlert"></span>
-      <span class="dot" id = "ledAlert" style="margin-right:0px"></span>
+      <span class="dot" id = "gasLeak"></span>
+      <span class="dot" id = "npButtonState" style="margin-right:0px"></span>
       
       <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:55px;margin-right:175px;display:inline-block;font-size:19px;">Fire Alert</p>
       <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;font-size:19px;">Gas Leak</p>
       <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:184px; display:inline-block;font-size:19px;">LED on</p>
       <p style="color:#FAEDCD;font-size:xx-small;"id = "npButtonState"></p> <!--sending button status, hidden-->
+      <p style="color:#FAEDCD;font-size:xx-small;"id = "fireAlert"></p> <!--sending fire status, hidden-->
+      <p style="color:#FAEDCD;font-size:xx-small;"id = "gasLeak"></p> <!--sending gas status, hidden-->
     </div>
 
     <div class="content"> <!--card grid-->
@@ -165,21 +167,6 @@
     value: 100 //document.getElementById("temperature").innerHTML //FIXME this might not work
 }).draw();
 
-/*// create humidity gauge
-var humidityGauge = new RadialGauge({ 
-  renderTo: 'gauge-humidity', 
-  value: 100,
-  width: 195,
-  height: 195,
-}).draw();
-
-// create gas gauge
-var gasGauge = new RadialGauge({ 
-  renderTo: 'gauge-gas', 
-  value: 100,
-  width: 195,
-  height: 195,
-}).draw();*/
 
     if (!window.addEventListener) {
         window.addEventListener = function(evt, listener) {
@@ -219,29 +206,29 @@ var gasGauge = new RadialGauge({
 
 
 // fire, gas, lED on alerts in mission control panel
-let fireAlert = false;
+/*let fireAlert = false;
 let gasAlert = false;
-let ledAlert = true;
-
-let temp = document.getElementById("temperature").innerHTML;
+let ledAlert = true;*/
+/*let temp = document.getElementById("temperature").innerHTML;
 let humid = document.getElementById("humidity").innerHTML;
-let gas = document.getElementById("gasReading").innerHTML;
+let gas = document.getElementById("gasReading").innerHTML;*/
+
+let fireAlert = document.getElementById("fireAlert").innerHTML;
+let gasLeak = document.getElementById("gasLeak").innerHTML;
 let ledState = document.getElementById("npButtonState").innerHTML;
 
-if ((temp > 32) && (humid < 45)){
-    fireAlert = true;
+if (fireAlert){
     document.getElementById("fireAlert").style.backgroundColor="red";
 }
 
-if (gas > 800)
+if (gasLeak)
 {
-  gasAlert = true;
-  document.getElementById("gasAlert").style.backgroundColor="red";
+  document.getElementById("gasLeak").style.backgroundColor="red";
 }
 
 if (ledState)
 {
-  document.getElementById("ledAlert").style.backgroundColor="green";
+  document.getElementById("npButtonState").style.backgroundColor="green";
 }
 
     </script>
