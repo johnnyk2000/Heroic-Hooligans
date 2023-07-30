@@ -5,6 +5,7 @@
 #include "AM232X.h"
 #include <Adafruit_NeoPixel.h>
 #include<math.h>
+//#include <dhtnew.h>
 
 
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
@@ -14,11 +15,14 @@
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 HackPublisher publisher("HeroicHooligans");  // publisher instance for team "hackers"
 AM232X AM2320;
+//DHTNEW tempHumSensor(39);
+
 
 const char *ssid = "ASUS-F8";
 const char *password = "K33pi7$@f3%";
 const int gasDetectorAnalogPin = 34; // pins for gas detector
 const int gasDetectorDigitalPin = 33;
+//const int gasPin = 39;
 const int trigPin = 13; // pins for ultrasonic
 const int echoPin = 12;
 const int neopixelPin = 26;
@@ -51,10 +55,11 @@ void neopixelOff() {
 
 void setup() {
   // put your setup code here, to run once:
-
+  //setType(22);
   Serial.begin(115200);
   pinMode(gasDetectorAnalogPin, INPUT); // set gas detector pins
   pinMode(gasDetectorDigitalPin, INPUT);
+  //pinMode(gasPin, INPUT);
   pinMode(trigPin, OUTPUT); // pin modes for ultrasonic
   pinMode(echoPin, INPUT); 
   pinMode(neopixelButton, INPUT_PULLUP);
@@ -75,12 +80,12 @@ void setup() {
   }
 
 
-   if (! AM2320.begin() )
-  {
-    Serial.println("Temp / Hum sensor not found");
-    while (1);
-  }
-  AM2320.wakeUp();
+  //  if (! AM2320.begin() )
+  // {
+  //   Serial.println("Temp / Hum sensor not found");
+  //   while (1);
+  // }
+  // AM2320.wakeUp();
 
   oled.clearDisplay();
   oled.display();
@@ -117,19 +122,13 @@ void loop() {
   distance = (3.43 * pow(10, -2) * duration) / 2; // distance in cm
 
 
-  // temperature = AM2320.getTemperature();
-  // humidity = AM2320.getHumidity();
-  // Serial.print("Gas reading: ");
-  // Serial.println(gasReading);
-  // Serial.print("Temperature: ");
-  // Serial.println(temperature);
-  // Serial.print("Humidity: ");
-  // Serial.println(humidity);
+
   int status = AM2320.read();
   if (status) { // if data is read, set the temperature and humidity
     temperature = AM2320.getTemperature();
     humidity = AM2320.getHumidity();
   }
+
 
   if(digitalRead(neopixelButton) == 0) {
     if(npButtonState == false){
@@ -145,10 +144,11 @@ void loop() {
 Serial.print("neopixel button: ");
 Serial.println(npButtonState);
 
-  // oled.setCursor(30, 30);
-  // oled.drawRect(32, 32, 30, 30, WHITE);
-  // oled.println("Hello");
-  // oled.display();
+  oled.setCursor(0, 0);
+  oled.setTextSize(2);
+  oled.print("Temp: ");
+  oled.println(temperature);
+  oled.display();
 
   
   Serial.print("Gas: "); // print data to serial monitor
@@ -162,9 +162,9 @@ Serial.println(npButtonState);
   Serial.println();
 
   publisher.store("gasReading", gasReading); // send data through blackbox
-  publisher.store("distance", distance);
-  publisher.store("temperature", temperature);
-  publisher.store("humidity", humidity);
+  publisher.store("distance", static_cast<int>(distance));
+  publisher.store("temperature", static_cast<int>(temperature));
+  publisher.store("humidity", static_cast<int>(humidity));
   publisher.send();
 
   delay(500);
