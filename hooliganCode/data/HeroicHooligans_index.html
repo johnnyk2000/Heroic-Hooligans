@@ -28,16 +28,24 @@
   <!--Home Page/Landing-->
   <div id = "section1"> <!--section 1 has no heading-->
     <div class = "banner">
-
     </div>
   </div>
 
   <!--Mission Control with Temp, Humidity, Gas, Ultrasonic Sensor Data-->
   <div id = "section2">
     <h1>Mission Control</h1>
-    <div class="content">
-      <div class="card-grid"> 
+    <div class="box"> <!--mission control alarm system-->
+      <span class="dot" style="margin-left:75px"></span>
+      <span class="dot"></span>
+      <span class="dot" style="margin-right:0px"></span>
+      
+      <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:60px;margin-right:175px;display:inline-block;">Fire Alert</p>
+      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;">Gas Leak</p>
+      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:140px; display:inline-block;">Inhospitable Conditions</p>
+    </div>
 
+    <div class="content"> <!--card grid-->
+      <div class="card-grid"> 
         <div class="card"> <!--temp card-->
           <p class="card-title">Temperature</p>
           <p class = "sensor-data" id = "temperature"> TEMP</p> <p style ="text-align: center;color: #575353">°C</p>
@@ -55,8 +63,10 @@
           <canvas id="gauge-gas"></canvas>
         </div>
         <div class="card"> <!--ultrasonic card-->
-          <p class="card-title">Ultrasonic Distance Sensor</p>
-          <p class = "sensor-data" id = "distance">DIST</p> <p style ="text-align: center;color: #575353">cm</p>
+          <p class="card-title">Ultrasonic Distance Sensor</p><br>
+          <p style ="text-align: center;color: #575353; font-size:larger">Next detected item in </p>
+          <p class = "sensor-data" id = "distance" style="font-size:larger;">DIST</p> <br>
+          <p style ="text-align: center;color: #575353; font-size:larger">cm</p>
           <canvas id="gauge-ultrasonic"></canvas>
         </div>
       </div>
@@ -69,43 +79,46 @@
     <h1>Design</h1>
   </div>
   
+
   <script>
-  var gauge = new LinearGauge({
+    //create temperature gague
+  var tempGauge = new LinearGauge({
     renderTo: 'gauge-temperature',
-    width: 120,
-    height: 350,
+    width: 195,
+    height: 400,
     units: "°C",
     minValue: 0,
     startAngle: 90,
     ticksAngle: 180,
-    valueBox: false,
-    maxValue: 220,
+    valueBox: true, //if sensor works with this KEEP, else, DELTE
+    valueBoxBorderRadius: 10,
+    maxValue: 100,
     majorTicks: [
         "0",
+        "10",
         "20",
+        "30",
         "40",
+        "50",
         "60",
+        "70",
         "80",
-        "100",
-        "120",
-        "140",
-        "160",
-        "180",
-        "200",
-        "220"
+        "90",
+        "100"
     ],
-    minorTicks: 2,
+    minorTicks: 5,
     strokeTicks: true,
     highlights: [
         {
-            "from": 100,
-            "to": 220,
-            "color": "rgba(200, 50, 50, .75)"
+            "from": 32,
+            "to": 100,
+            "color": "#ef6351"
         }
     ],
     colorPlate: "#CCD5AE",
     borderShadowWidth: 0,
     borders: false,
+    borderRadius: 50,
     needleType: "arrow",
     needleWidth: 2,
     needleCircleSize: 7,
@@ -114,7 +127,22 @@
     animationDuration: 1500,
     animationRule: "linear",
     barWidth: 10,
-    value: 35
+    value: 10 //document.getElementById("temperature").innerHTML //FIXME this might not work
+}).draw();
+
+// create humidity gauge
+var humidityGauge = new RadialGauge({ 
+  renderTo: 'gauge-humidity', 
+  value: 10,
+  width: 195,
+  height: 195,
+}).draw();
+
+var gasGauge = new RadialGauge({ 
+  renderTo: 'gauge-gas', 
+  value: 10,
+  width: 195,
+  height: 195,
 }).draw();
 
     if (!window.addEventListener) {
@@ -131,26 +159,29 @@
         }
     }
 
-    // animage all gauges on a page
+    // animate all gauges on page
     window.addEventListener('load', function() {
         document.gauges.forEach(function(gauge) {
             setInterval(function() {
-              gauge.value = document.getElementById("temperature").innerHTML;
-              /*switch (gauge.options.renderTo.id){
+              //gauge.value = document.getElementById("temperature").innerHTML; // maybe .value
+              switch (gauge.options.renderTo.id){
               case "gauge-temperature":
-                gauge.value = "10";
+                gauge.value = document.getElementById("temperature").innerHTML;;
               break;
-              case "an_gauge_2":
-                gauge.value = 20;
-              break;}*/ //DW
-            }, gauge.animation.duration + 100);
+              case "gauge-humidity":
+                gauge.value = document.getElementById("humidity").innerHTML;;
+              break;
+              case "gauge-gas":
+                gauge.value = document.getElementById("gasReading").innerHTML;;
+              break;
+              default:
+                gauge.value = 0;
+            }
+            }, gauge.animation.duration + 100); 
         });
     });
+
     </script>
-
-
-
-
 
 
 </body>

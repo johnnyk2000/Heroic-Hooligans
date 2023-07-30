@@ -70,7 +70,7 @@ a {
 h1 {
   text-align: center;
   margin-top: 85px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   padding: 0;
   font-weight: lighter;
   color:rgba(0, 0, 0, 0.762);
@@ -90,8 +90,8 @@ h2 {
 
 #section2
 {
-    height: 1300px; 
-    background:#FAEDCD;/*rgba(223, 197, 29, 0.173);*/
+    height: auto; 
+    background:#FAEDCD;
     display: inline-block;
     width: 100%
 }
@@ -109,6 +109,7 @@ h2 {
     color: white;
     /*for home page section header*/
 }
+
 .content { 
     padding: 6%;
   }
@@ -117,7 +118,10 @@ h2 {
 .card-grid { 
     max-width: 1200px; 
     min-height: 400px;
-    margin: 0 auto; 
+    margin-right: auto; 
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-top: 0px;
     display: grid; 
     grid-gap: 1em; 
    /* grid-template-columns: 20ch auto;*/
@@ -141,10 +145,45 @@ h2 {
     text-align: center;
   }
 
+canvas
+{
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/*Mission control sensor data*/
 .sensor-data
 {
     color: #575353;
     font-weight: bold;
     text-align: center;
     margin-top: 50px;
+}
+
+/*Mission control alarm system heading*/
+.box{
+  width: 699px;
+  height: 60px;
+  border: 0px solid #FAEDCD;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  padding: 15px;
+  }
+
+.dot {
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 223px;
+  margin-bottom: 4px;
+  height: 25px;
+  width: 25px;
+  background-color: #FEFAE0;
+  border-radius: 50%;
+  display: inline-block;
 }
