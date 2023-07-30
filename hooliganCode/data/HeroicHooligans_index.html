@@ -19,6 +19,7 @@
   <!--header with three sections, click on section to scroll to it-->
   <nav>
     <ul>
+      <li class = "logo"><img src="HeroicHooligans_images/HHLogo3.png"></li>
       <li><a class="fromLeft" href="#section1">Home</a></li>
       <li><a href="#section2">Mission Control</a></li>
       <li><a href="#section3">Design</a></li>
@@ -35,13 +36,14 @@
   <div id = "section2">
     <h1>Mission Control</h1>
     <div class="box"> <!--mission control alarm system-->
-      <span class="dot" style="margin-left:75px"></span>
-      <span class="dot"></span>
-      <span class="dot" style="margin-right:0px"></span>
+      <span class="dot" id = "fireAlert" style="margin-left:75px"></span>
+      <span class="dot" id = "gasAlert"></span>
+      <span class="dot" id = "ledAlert" style="margin-right:0px"></span>
       
       <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:60px;margin-right:175px;display:inline-block;">Fire Alert</p>
       <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;">Gas Leak</p>
-      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:140px; display:inline-block;">Inhospitable Conditions</p>
+      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:190px; display:inline-block;">LED on</p>
+      <p style="color:#FAEDCD;font-size:xx-small;"id = "npButtonState"></p> <!--sending button status, hidden-->
     </div>
 
     <div class="content"> <!--card grid-->
@@ -127,20 +129,21 @@
     animationDuration: 1500,
     animationRule: "linear",
     barWidth: 10,
-    value: 10 //document.getElementById("temperature").innerHTML //FIXME this might not work
+    value: 100 //document.getElementById("temperature").innerHTML //FIXME this might not work
 }).draw();
 
 // create humidity gauge
 var humidityGauge = new RadialGauge({ 
   renderTo: 'gauge-humidity', 
-  value: 10,
+  value: 100,
   width: 195,
   height: 195,
 }).draw();
 
+// create gas gauge
 var gasGauge = new RadialGauge({ 
   renderTo: 'gauge-gas', 
-  value: 10,
+  value: 100,
   width: 195,
   height: 195,
 }).draw();
@@ -163,8 +166,8 @@ var gasGauge = new RadialGauge({
     window.addEventListener('load', function() {
         document.gauges.forEach(function(gauge) {
             setInterval(function() {
-              //gauge.value = document.getElementById("temperature").innerHTML; // maybe .value
-              switch (gauge.options.renderTo.id){
+              gauge.value = document.getElementById("temperature").innerHTML; // maybe .value
+              /*switch (gauge.options.renderTo.id){
               case "gauge-temperature":
                 gauge.value = document.getElementById("temperature").innerHTML;
               break;
@@ -176,13 +179,39 @@ var gasGauge = new RadialGauge({
               break;
               default:
                 gauge.value = 0;
-            }
+            }*/
             }, gauge.animation.duration + 100); 
         });
     });
 
-    </script>
 
+// fire, gas, lED on alerts in mission control panel
+let fireAlert = false;
+let gasAlert = false;
+let ledAlert = true;
+
+let temp = document.getElementById("temperature").innerHTML;
+let humid = document.getElementById("humidity").innerHTML;
+let gas = document.getElementById("gasReading").innerHTML;
+let ledState = document.getElementById("npButtonState").innerHTML;
+
+if ((temp > 32) && (humid < 45)){
+    fireAlert = true;
+    document.getElementById("fireAlert").style.backgroundColor="red";
+}
+
+if (gas > 800)
+{
+  gasAlert = true;
+  document.getElementById("gasAlert").style.backgroundColor="red";
+}
+
+if (ledState)
+{
+  document.getElementById("ledAlert").style.backgroundColor="green";
+}
+
+    </script>
 
 </body>
 </html>
