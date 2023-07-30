@@ -39,9 +39,10 @@ float temperature = 0;
 float humidity = 0;
 float duration = 0;
 float distance = 0;
-bool npButtonState = false; // for toggle
+bool npButtonState = false; // for ring led toggle
+string fire = ""; // or bool -- discuss with lyra
 
-
+// hazard functions MAY NEED TO CHANGE VALUES AFTER TESTING AND CALIBRATION
 bool isFire(const float& temp, const float& hum) {
   if (temp > 32.0 && hum < 45) {
     return true;
@@ -54,7 +55,13 @@ bool isGasLeak(const int& gas) {
   }
   return false;
 }
-void oledPrintData() {
+bool isSafe() (const int& temp, const float& hum, const int& gas) {
+  if (temp < 29 && hum > 50 && gas < 900) {
+    return true;
+  }
+  return false;
+}
+void oledPrintData() { // function to print data to oled
   oled.clearDisplay();
   oled.setCursor(0, 30);
   oled.print(temperature, 1);
@@ -77,7 +84,8 @@ void oledPrintData() {
   oled.display();
 
 }
-void neopixelOn() {
+
+void neopixelOn() { // functions to toggle neopixel
     for(int i = 0; i < numPixels; i++) {
     neopixel.setPixelColor(i, neopixel.Color(255, 255, 255));
     neopixel.show();
@@ -117,26 +125,18 @@ void setup() {
     Serial.println(F("SSD1306 allocation failed"));
     while (true);
   }
+  oled.clearDisplay();
+  oled.display();
 
-
-   if (! AM2320.begin() )
-  {
+  if (!AM2320.begin()) {
     Serial.println("Temp / Hum sensor not found");
     while (1);
   }
   AM2320.wakeUp();
 
-  oled.clearDisplay();
-  oled.display();
-
-
-
   neopixel.begin();
 
-
-
-
-Serial.println("going into loop");
+  Serial.println("going into loop");
 
 
 
@@ -168,7 +168,7 @@ void loop() {
     humidity = AM2320.getHumidity();
   }
 
-
+  // ring led button toggle
   if(digitalRead(neopixelButton) == 0) { // if button gets pressed
     if(npButtonState == false){ // and if ring led is currently off, turn led on
       npButtonState = true; 
@@ -180,16 +180,14 @@ void loop() {
       neopixelOff();
     }
   }
-Serial.print("neopixel button: ");
-Serial.println(npButtonState);
 
-
-  
 
 
   oledPrintData();
-  
-  Serial.print("Gas: "); // print data to serial monitor
+
+  Serial.print("neopixel button: ");  // print data to serial monitor
+  Serial.println(npButtonState);
+  Serial.print("Gas: "); 
   Serial.println(gasReading);
   Serial.print("distance: ");
   Serial.println(distance);
