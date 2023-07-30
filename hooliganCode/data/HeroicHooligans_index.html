@@ -90,25 +90,30 @@
     </div>
   </div>
 
-
 <!--Design Review-->
   <div id = "section3">
     <h1 style="margin-bottom: 10px";>Design</h1><br><br>
     <h2 style="font-size:55px;color:#FAEDCD";">Overview</h2>
     <p style="margin-top:80px;margin-bottom:40px;margin-left:150px;margin-right:150px;font-size:30px;color:#FAEDCD;">
-      The Heroic Hooligan gauntlet was designed with the goals of  
+      The Heroic Hooligan gauntlet was designed with the goals of 
+      endurance, accuracy, and functionality in mind. It uses  
       It makes use of three sensors: temperature, humidity, gas, and ultrasonic.
       Lorem ipsum dolor sit amet. Eum natus quis ut iusto necessitatibus aut consequatur 
       eaque rem consequatur doloremque ut internos galisum. In velit atque aut quasi obcaecati 
       et debitis quos non vero voluptatum est nulla magnam et sunt voluptas. 
       Non recusandae atque a praesentium fugiat vel galisum ipsam. Ea veniam 
-      voluptatem qui corporis aspernatur id voluptatem nesciunt in consequatur corrupti.</p><br><br><br>
-     
+      voluptatem qui corporis aspernatur id voluptatem nesciunt in consequatur corrupti.</p><br><br><br>  
 
       <table cellspacing="20">
         <tr>
           <td>
-            <figure>
+            <figure style = "width:155px;
+            height:155px;
+            margin-top: 100px;
+            margin-left: 90px;
+            margin-bottom: 90px;
+            border-radius:50%;
+            overflow:hidden;">
               <img src="HeroicHooligans_images/codeFiller.png" width="200" style="float:left">
             </figure>
           </td>
@@ -123,9 +128,6 @@
         </tr>
       </table>
 
-
-
-
       <h2 style="text-align: left; margin-left:150px;">Electronics</h2>
       <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
         doloremque pariatur. Est necessitatibus nostrum est neque
@@ -134,13 +136,25 @@
          ex explicabo distinctio nam aliquam necessitatib</p>
 
 
+      <h2 style="text-align: left; margin-left:150px;">CAD Design</h2>
+      <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
+        doloremque pariatur. Est necessitatibus nostrum est neque
+         recusandae rem facilis quas ut omnis blanditiis et maiores 
+         debitis et autem ducimus. Ut beatae rerum ut repudiandae maiores 
+         ex explicabo distinctio nam aliquam necessitatib</p>
+
+        <!--images of CAD-->
+         <div id="comparison">
+          <figure style="border-radius:20%;
+          overflow:hidden;">
+            <div id="divisor"></div>
+          </figure>
+          <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+        </div>
+        <div><img src="HeroicHooligans_images/forearm.png" class = "center"></div>
+        <div style="margin-right:auto; margin-left:auto;" class="center"><img src="HeroicHooligans_images/Assembly.png" ></div>
 
 
-
-
-
-  </div>
-  
 
   <script>
     //create temperature gague
@@ -267,6 +281,12 @@ if (ledState)
   document.getElementById("npButtonState").style.backgroundColor="green";
 }
 
+
+var divisor = document.getElementById("divisor");
+slider = document.getElementById("slider");
+function moveDivisor() { 
+	divisor.style.width = slider.value+"%";
+}
     </script>
 
 </body>
@@ -275,7 +295,7 @@ if (ledState)
   <p><a style="text-align: center;" href="https://github.com/johnnyk2000/Heroic-Hooligans" target="_blank"><img src="HeroicHooligans_images/github-mark.png"
     width="29"
     height="29"></a></p>
-  <p style="color: #00000085; font-weight:light;font-size:x-small;margin-left:30px;margin-bottom:50px;">Team: Jonathan Kim, Lyra Latifi, Antonio Ramirez.<br>Created for UCLA HAcK 2023.</p>
+  <p style="color: #FEFAE0; font-weight:light;font-size:x-small;margin-left:30px;margin-bottom:50px;">Team: Jonathan Kim, Lyra Latifi, Antonio Ramirez.<br>Created for UCLA HAcK 2023.</p>
 </footer>
 
 </html>
