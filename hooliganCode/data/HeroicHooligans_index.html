@@ -13,9 +13,10 @@
   <link rel="stylesheet" href="HeroicHooligans_style.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <title>Heroic Hooligans Mission Control </title>
+  <link rel="shortcut icon" href="HeroicHooligans_images/favicon.ico" type="image/x-icon"/>
 </head>
 
-<body>
+<body style="cursor: url(HeroicHooligans_images/brownCursor), auto">
   <!--header with three sections, click on section to scroll to it-->
   <nav>
     <ul>
@@ -47,42 +48,42 @@
   </div>
 
   <!--Mission Control with Temp, Humidity, Gas, Ultrasonic Sensor Data-->
-  <div id = "section2">
+  <div id = "section2" style="cursor: url(HeroicHooligans_images/sniperBlack.cur), auto">
     <h1>Mission Control</h1>
     <div class="box"> <!--mission control alarm system-->
       <span class="dot" id = "fireAlert" style="margin-left:75px"></span>
       <span class="dot" id = "gasAlert"></span>
       <span class="dot" id = "ledAlert" style="margin-right:0px"></span>
       
-      <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:60px;margin-right:185px;display:inline-block;">Fire Alert</p>
-      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;">Gas Leak</p>
-      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:195px; display:inline-block;">LED on</p>
+      <br><p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:55px;margin-right:175px;display:inline-block;font-size:19px;">Fire Alert</p>
+      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px; display:inline-block;font-size:19px;">Gas Leak</p>
+      <p style="color:rgba(0, 0, 0, 0.762);margin-top:0px;margin-left:184px; display:inline-block;font-size:19px;">LED on</p>
       <p style="color:#FAEDCD;font-size:xx-small;"id = "npButtonState"></p> <!--sending button status, hidden-->
     </div>
 
     <div class="content"> <!--card grid-->
       <div class="card-grid"> 
         <div class="card"> <!--temp card-->
-          <p class="card-title">Temperature</p>
-          <p class = "sensor-data" id = "temperature"> TEMP</p> <p style ="text-align: center;color: #575353">°C</p>
+          <p class="card-title" style = "margin-top:15px">Temperature</p>
+          <p class = "sensor-data" id = "temperature" style="margin-top:37px;margin-bottom:0px;font-size:19px;">TEMP</p> <p style ="text-align:center;color:#575353"></p>
           <canvas id="gauge-temperature"></canvas>
         </div>
         <div class="card"> <!--humidity card-->
-          <p class ="card-title">Humidity</p>
-          <p  class = "sensor-data" id = "humidity">HUMIDITY</p> <p style ="text-align: center;color: #575353">% RH</p>
+          <p class ="card-title" style = "margin-top:15px">Humidity</p>
+          <p  class = "sensor-data" id = "humidity" style="font-size:50px;text-align:center;margin-top:133px;margin-bottom:70px">HUMIDITY</p> <p style ="text-align:center;font-size:27px;color:#575353">% RH</p>
           <canvas id="gauge-humidity"></canvas>
         </div>
 
         <div class="card"> <!--gas card-->
-          <p class="card-title">Gas Detection</p>
-          <p  class = "sensor-data" id = "gasReading">GAS</p> <p style ="text-align: center;color: #575353">ppm</p>
+          <p class="card-title" style = "margin-top:15px">Gas Detection</p>
+          <p  class = "sensor-data" id = "gasReading" style="font-size:50px;text-align:center;margin-top:133px;margin-bottom:70px">GAS</p> <p style ="text-align:center;font-size:27px;color:#575353">ppm</p>
           <canvas id="gauge-gas"></canvas>
         </div>
         <div class="card"> <!--ultrasonic card-->
-          <p class="card-title">Ultrasonic Distance Sensor</p><br>
+          <p class="card-title" style = "margin-top:15px;">Ultrasonic Distance Sensor</p><br>
           <p style ="text-align: center;color: #575353; font-size:larger">Next detected item in </p>
-          <p class = "sensor-data" id = "distance" style="font-size:50px; text-align:center;">DIST</p> <br>
-          <p style ="text-align: center;color: #575353; font-size:larger">cm</p>
+          <p class = "sensor-data" id = "distance" style="font-size:50px; text-align:center;margin-bottom:70px;">DIST</p> <br>
+          <p style ="text-align: center;color: #575353; font-size:27px;;margin-top:0px;">cm</p>
           <canvas id="gauge-ultrasonic"></canvas>
         </div>
       </div>
@@ -92,7 +93,16 @@
 
 <!--Design Review-->
   <div id = "section3">
-    <h1>Design</h1>
+    <h1 style="margin-bottom: 10px";>Design</h1><br><br>
+    <h2 style="font-size:55px;color:#000000c2";">Overview</h2>
+    <p style="margin-top:80px;margin-bottom:15px;margin-left:150px;margin-right:150px;font-size:30px;color:#FAEDCD;">Lorem ipsum dolor sit amet. Eum natus quis ut iusto necessitatibus aut consequatur 
+      eaque rem consequatur doloremque ut internos galisum. In velit atque aut quasi obcaecati 
+      et debitis quos non vero voluptatum est nulla magnam et sunt voluptas. 
+      Non recusandae atque a praesentium fugiat vel galisum ipsam. Ea veniam 
+      voluptatem qui corporis aspernatur id voluptatem nesciunt in consequatur corrupti.</p><br><br><br>
+      <span><img></span>
+
+
   </div>
   
 
@@ -106,6 +116,10 @@
     minValue: 0,
     startAngle: 90,
     ticksAngle: 180,
+    colorUnits: "#000000c2",
+    colorNeedle: "#000000c2",
+    colorBar: "#CCD5AE", 
+    colorBarProgress: "#FEFAE0",
     valueBox: false, //if sensor works with this KEEP, else, DELTE
     valueBoxBorderRadius: 10,
     maxValue: 100,
@@ -122,13 +136,18 @@
         "90",
         "100"
     ],
+    fontNumbers:'Merriweather', 
+    fontUnits: "Merriweather",
+    fontValue:  "Merriweather",
+    fontNumbersSize: 22,
+    fontUnitsSize: 25,
     minorTicks: 5,
     strokeTicks: true,
     highlights: [
         {
             "from": 32,
             "to": 100,
-            "color": "#ef6351"
+            "color": "#ff0000"
         }
     ],
     colorPlate: "#CCD5AE",
@@ -146,7 +165,7 @@
     value: 100 //document.getElementById("temperature").innerHTML //FIXME this might not work
 }).draw();
 
-// create humidity gauge
+/*// create humidity gauge
 var humidityGauge = new RadialGauge({ 
   renderTo: 'gauge-humidity', 
   value: 100,
@@ -160,7 +179,7 @@ var gasGauge = new RadialGauge({
   value: 100,
   width: 195,
   height: 195,
-}).draw();
+}).draw();*/
 
     if (!window.addEventListener) {
         window.addEventListener = function(evt, listener) {

@@ -90,7 +90,7 @@ a {
     transition: background-size 0.3s;
     margin: 5px 0;
   }
-  
+
   .fromLeft {
     background-position: 0 calc(100% - var(--bottom-distance))
   }
@@ -108,11 +108,14 @@ h1 {
   padding: 0;
   font-weight:300px;
   font-size:calc(3.7vw + 3.7vh + 2vmin);
-  color:rgba(0, 0, 0, 0.762);
+  color:#000000c2;
 }
 
 h2 {
     text-align:center;
+    color: #000000c2;
+    font-size:calc(1.2vw + 1.2vh + 2vmin);
+
 }
 
 #section1
@@ -133,7 +136,7 @@ h2 {
 
 #section3
 {
-    height: 1000px;
+    height: auto;
     background: #D4A373; /*#2c703730;*/
     display: inline-block; /*set width and height*/
     width: 100%;
