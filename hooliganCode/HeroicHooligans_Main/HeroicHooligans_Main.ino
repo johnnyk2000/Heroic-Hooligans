@@ -40,7 +40,7 @@ float humidity = 0;
 float duration = 0;
 float distance = 0;
 bool npButtonState = false; // for ring led toggle
-string fire = ""; // or bool -- discuss with lyra
+//string fire = ""; // or bool -- discuss with lyra
 
 // hazard functions MAY NEED TO CHANGE VALUES AFTER TESTING AND CALIBRATION
 bool isFire(const float& temp, const float& hum) {
@@ -55,7 +55,7 @@ bool isGasLeak(const int& gas) {
   }
   return false;
 }
-bool isSafe() (const int& temp, const float& hum, const int& gas) {
+bool isSafe (const int& temp, const float& hum, const int& gas) {
   if (temp < 29 && hum > 50 && gas < 900) {
     return true;
   }
