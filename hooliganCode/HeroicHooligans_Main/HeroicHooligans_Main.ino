@@ -8,13 +8,11 @@
 //#include <dhtnew.h>
 
 
-#define SCREEN_WIDTH 128 // OLED display width,  in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+// #define SCREEN_WIDTH 128 // OLED display width,  in pixels
+// #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 // declare an SSD1306 display object connected to I2C
 
-Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
-HackPublisher publisher("HeroicHooligans");  // publisher instance for team "hackers"
-AM232X AM2320;
+
 //DHTNEW tempHumSensor(39);
 
 
@@ -28,8 +26,13 @@ const int echoPin = 12;
 const int neopixelPin = 26;
 const int numPixels = 12;
 const int neopixelButton = 17;
+const int SCREEN_WIDTH   = 128;
+const int SCREEN_HEIGHT = 64;
 
 Adafruit_NeoPixel neopixel = Adafruit_NeoPixel(numPixels, neopixelPin, NEO_GRB + NEO_KHZ800);
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+HackPublisher publisher("HeroicHooligans");  // publisher instance for team "hackers"
+AM232X AM2320;
 
 int gasReading = 0;
 float temperature = 0;
@@ -38,6 +41,42 @@ float duration = 0;
 float distance = 0;
 bool npButtonState = false; // for toggle
 
+
+bool isFire(const float& temp, const float& hum) {
+  if (temp > 32.0 && hum < 45) {
+    return true;
+  }
+  return false;
+}
+bool isGasLeak(const int& gas) {
+  if (gas > 950) {
+    return true;
+  }
+  return false;
+}
+void oledPrintData() {
+  oled.clearDisplay();
+  oled.setCursor(0, 30);
+  oled.print(temperature, 1);
+  oled.setCursor(0, 20);
+  oled.setTextSize(1);
+  oled.setTextColor(SSD1306_WHITE);
+  oled.println("Temp");
+  oled.setCursor(29, 20);
+  oled.println("Hum");
+  oled.setCursor(29, 30);
+  oled.print(humidity, 1);
+  oled.setCursor(59, 20);
+  oled.println("Gas");
+  oled.setCursor(59, 30);
+  oled.print(gasReading);
+  oled.setCursor(85, 20);
+  oled.print("Dist");
+  oled.setCursor(85, 30);
+  oled.print(distance, 1);
+  oled.display();
+
+}
 void neopixelOn() {
     for(int i = 0; i < numPixels; i++) {
     neopixel.setPixelColor(i, neopixel.Color(255, 255, 255));
@@ -80,12 +119,12 @@ void setup() {
   }
 
 
-  //  if (! AM2320.begin() )
-  // {
-  //   Serial.println("Temp / Hum sensor not found");
-  //   while (1);
-  // }
-  // AM2320.wakeUp();
+   if (! AM2320.begin() )
+  {
+    Serial.println("Temp / Hum sensor not found");
+    while (1);
+  }
+  AM2320.wakeUp();
 
   oled.clearDisplay();
   oled.display();
@@ -144,12 +183,11 @@ void loop() {
 Serial.print("neopixel button: ");
 Serial.println(npButtonState);
 
-  oled.setCursor(0, 0);
-  oled.setTextSize(2);
-  oled.print("Temp: ");
-  oled.println(temperature);
-  oled.display();
 
+  
+
+
+  oledPrintData();
   
   Serial.print("Gas: "); // print data to serial monitor
   Serial.println(gasReading);
