@@ -95,15 +95,7 @@
     <h1 style="margin-bottom: 10px";>Design</h1><br><br>
     <h2 style="font-size:55px;color:#FAEDCD";">Overview</h2>
     <p style="margin-top:80px;margin-bottom:40px;margin-left:150px;margin-right:150px;font-size:30px;color:#FAEDCD;">
-      The Heroic Hooligan gauntlet was designed with the goals of 
-      endurance, accuracy, and functionality in mind. It uses  
-      It makes use of three sensors: temperature, humidity, gas, and ultrasonic.
-      Lorem ipsum dolor sit amet. Eum natus quis ut iusto necessitatibus aut consequatur 
-      eaque rem consequatur doloremque ut internos galisum. In velit atque aut quasi obcaecati 
-      et debitis quos non vero voluptatum est nulla magnam et sunt voluptas. 
-      Non recusandae atque a praesentium fugiat vel galisum ipsam. Ea veniam 
-      voluptatem qui corporis aspernatur id voluptatem nesciunt in consequatur corrupti.</p><br><br><br>  
-
+      The main design goals of the team were to read and transmit data from sensors accurately, create a secure assembly, house electronic components safely, and alert the eHero and mission control of hazards in the area. We used three sensors in our gauntlet: a temperature and humidity sensor to detect fires, a gas detection module to detect gas leaks, and an ultrasonic distance sensor to detect the trapped Bruin Engineers. A neopixel ring LED lights the way of the eHero, and an LCD screen allows the eHero to monitor the sensor data.</p><br><br><br>  
       <table cellspacing="20">
         <tr>
           <td>
@@ -114,34 +106,39 @@
             margin-bottom: 90px;
             border-radius:50%;
             overflow:hidden;">
-              <img src="HeroicHooligans_images/codeFiller.png" width="200" style="float:left">
+              <img src="HeroicHooligans_images/image10.png" width="200" style="float:left">
             </figure>
           </td>
           <td>
-            <h2 style="text-align: left;">Coding</h2>
-            <p style="margin-bottom: 100px; margin-right:200pxl; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
-              doloremque pariatur. Est necessitatibus nostrum est neque
-               recusandae rem facilis quas ut omnis blanditiis et maiores 
-               debitis et autem ducimus. Ut beatae rerum ut repudiandae maiores 
-               ex explicabo distinctio nam aliquam necessitatib</p>
+            <h2 style="text-align: left;">Electronics</h2>
+            <h3 style="font-size:12px;">Written by: Jonathan Kim</h3>
+            <p style="margin-bottom: 100px; margin-right:200pxl; font-size:23px;">
+              The electronics component of this started off with a very rough start. The laptop used to upload to the ESP32 didn’t have the necessary drivers, and it took three hours to figure this out. At the end of the first day, only the ultrasonic sensor was working. We got all three sensors working together the second day by doing research and more iterations. The next problem was that the LCD screen would not work with the AM320 sensor. We attempted to use the OneWire protocol instead of the I2C protocol, but found no luck. It was discovered that I had forgotten pullup resistors for the LCD screen’s SCL and SDA pins. This solved the problem. We almost short circuited the ESP32 in trying to implement our toggle button for the Neopixel ring. We were sending 3.3V to one pin of the button, connecting that node to ground, then connecting the other leg of the button to a digital pin. This mindless error was fixed by simply connecting a digital pin to one pin of the button and the other pin to ground.
+</p>
           </td>
         </tr>
       </table>
 
-      <h2 style="text-align: left; margin-left:150px;">Electronics</h2>
-      <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
-        doloremque pariatur. Est necessitatibus nostrum est neque
-         recusandae rem facilis quas ut omnis blanditiis et maiores 
-         debitis et autem ducimus. Ut beatae rerum ut repudiandae maiores 
-         ex explicabo distinctio nam aliquam necessitatib</p>
+      <h2 style="text-align: left; margin-left:150px;">Coding</h2>
+      <h3 style="font-size:12px;margin-left:150px;">Written by: Lyra Latifi</h3>
+
+      <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:20px;">
+        The code for the website was written with two main goals in mind: creating a simple, readable user interface and displaying all information from the ESP32. Html, css, and javascript code were used alongside code on Arduino IDE to produce aesthetic data.
+The html code used of classes to delineate between types of information and format them accordingly. The Arduino code made use of the provided blackbox communication to send all sensor data, as well as booleans to determine presence of hazards, to the website. The website code took these values and either displayed them directly (sensor data), or communicated them to javascript code so that they could cause a reaction for mission control to see (temperature gauge, fire, gas, LED alerts). 
+<br>
+The main obstacles that I faced in my development were creating a user-friendly interface, communicating with the ESP32, debugging. To create a user-friendly interface, I used the iterative design process. This allowed me to modify color, text, and other UI incrementally and build a functional website. Communication with the ESP32 was challenging, so I talked with my team and researched html-javascript program communication to determine the solution. I faced problems with the use of graphics when creating event listeners. I used the debugger and read the gauge documentation to solve it. I also faced issues with the mission control alerts, which I solved by changing the element which had the id tag for alerts after researching spans in HTML. I also learned about the importance of scrupulosity after leaving out “px” in my CSS file and crashing an entire function on the website to crash.
+<br>
+The production of a user friendly website was highly iterative. I began with a bare-bones website with a single header and three sections. I added a linked navigation menu to auto-scrolls to each section. I began to deliberate between design choices, and I often had to code something and see the result to determine whether or not it was user friendly. By making choices that were unfriendly, including using small text, poor contrast, or clutter, I was able to iterate towards a user friendly website. I also had the idea to include a graphic in the mission control to cue the user visually. I chose a color palette, fonts, custom mouse icons, and worked with spacing and design to improve my interface. I added features including sliders, hover-to-change images, animations for links, logos, and useful links. 
+        </p>
 
 
       <h2 style="text-align: left; margin-left:150px;">CAD Design</h2>
-      <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:30px;">amus et tempore consequatur aut impedit minima ut 
-        doloremque pariatur. Est necessitatibus nostrum est neque
-         recusandae rem facilis quas ut omnis blanditiis et maiores 
-         debitis et autem ducimus. Ut beatae rerum ut repudiandae maiores 
-         ex explicabo distinctio nam aliquam necessitatib</p>
+      <h3 style="font-size:12px;margin-left:150px;">Written by: Antonio Ramirez</h3>
+
+      <p style="margin-bottom: 100px; margin-left:150px; margin-right:150px; font-size:23px;">
+      A single CAD iteration was completed on SolidWorks. The goal of the design was to provide abundant area to house all electrical components on the forearm. In order to accomplish this goal, CAD models of all electrical components were either downloaded or created to ensure that dimensioning errors were minimized. The portion of the design which extends out to the hand would serve the purpose of holding the gauntlet in place through a handle. This extended portion also provides an option to mount any additional components. 
+Once each part of the gauntlet was designed, an assembly was created on Solidworks to give a general idea of the placement of each component. Any adjustments to dimensioning were made prior to 3d printing the prototype. Through careful planning and successful 3D printed parts, only one iteration was needed for the prototype. The final part created provided housing for the breadboard.
+</p>
 
         <!--images of CAD-->
          <div id="comparison">
